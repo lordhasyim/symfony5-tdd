@@ -18,6 +18,14 @@ class StockTest extends KernelTestCase
         $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
     }
 
+    public function teardown(): void
+    {
+        parent::tearDown();
+
+        $this->entityManager->close();
+        $this->entityManager = null;
+    }
+
     public function testItWorks()
     {
         $this->assertTrue(true);
